@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아날로그캠랩 — 필름 카메라 감성 필터 & 포토 그리드 메이커</title>
+<meta name="description" content="그레인, 라이트 리크, 헤일레이션까지 진짜 필름 감성으로 사진을 변환하거나 1x4 / 2x2 / 2x3 포토 그리드를 만들어보세요. 인스타그램 규격으로 내보내기 가능. 완전 무료, 모바일 지원, 사진은 서버에 업로드되지 않습니다.">
+<meta name="keywords" content="film filter, digicam filter, photo grid maker, 4 cut photo strip, retro camera filter, vintage photo effect, y2k filter, instagram photo filter">
+<link rel="canonical" href="https://analogcam.app/ko/">
+<link rel="alternate" hreflang="en" href="https://analogcam.app/">
+<link rel="alternate" hreflang="ko" href="https://analogcam.app/ko/">
+<link rel="alternate" hreflang="ja" href="https://analogcam.app/ja/">
+<link rel="alternate" hreflang="es" href="https://analogcam.app/es/">
+<link rel="alternate" hreflang="fr" href="https://analogcam.app/fr/">
+<link rel="alternate" hreflang="x-default" href="https://analogcam.app/">
+<meta property="og:title" content="아날로그캠랩 — 필름 카메라 감성 필터 & 포토 그리드 메이커">
+<meta property="og:description" content="그레인, 라이트 리크, 헤일레이션까지 진짜 필름 감성으로 사진을 변환하거나 1x4 / 2x2 / 2x3 포토 그리드를 만들어보세요. 인스타그램 규격으로 내보내기 가능. 완전 무료, 모바일 지원, 사진은 서버에 업로드되지 않습니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://analogcam.app/ko/">
+<meta property="og:image" content="https://analogcam.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="아날로그캠랩 — 필름 카메라 감성 필터 & 포토 그리드 메이커">
+<meta name="twitter:description" content="그레인, 라이트 리크, 헤일레이션까지 진짜 필름 감성으로 사진을 변환하거나 1x4 / 2x2 / 2x3 포토 그리드를 만들어보세요. 인스타그램 규격으로 내보내기 가능. 완전 무료, 모바일 지원, 사진은 서버에 업로드되지 않습니다.">
+<meta name="twitter:image" content="https://analogcam.app/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FF7A1A'/%3E%3Ccircle cx='50' cy='55' r='22' fill='none' stroke='white' stroke-width='7'/%3E%3Crect x='30' y='28' width='40' height='12' rx='4' fill='white'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Analogcam Lab",
+  "applicationCategory": "PhotographyApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Free browser-based tool that adds authentic film camera texture (grain, light leaks, halation) to photos and builds multi-photo grid strips. All processing happens locally in the browser."
+}
+</script>
+<style>
+  :root{
+    --bg:#F6F0E4; --card:#FFFDF8; --ink:#2B2620; --ink-soft:#75695A;
+    --accent:#FF7A1A; --accent-soft:#FFE7D3; --line:#E7DCC8;
+    --sans:'Inter',-apple-system,sans-serif; --display:'Space Grotesk',sans-serif; --mono:'VT323',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 18px 60px;}
+  header{padding:20px 0 20px;position:relative;}
+  .header-top{display:flex;justify-content:flex-end;}
+  .lang-btn{border:1.5px solid var(--line);background:var(--card);padding:7px 12px;border-radius:100px;font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px;color:var(--ink);}
+  .lang-menu{position:absolute;top:44px;right:0;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;display:none;z-index:50;min-width:150px;}
+  .lang-menu.open{display:block;}
+  .lang-option{padding:9px 12px;border-radius:8px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);}
+  .lang-option:hover{background:var(--accent-soft);}
+  .header-center{text-align:center;margin-top:8px;}
+  .logo{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;display:flex;align-items:center;justify-content:center;gap:8px;}
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);}
+  header p{color:var(--ink-soft);font-size:.92rem;margin:8px 0 0;}
+  .tabs{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:5px;margin:24px 0;}
+  .tabs button{flex:1;border:none;background:transparent;padding:11px;border-radius:100px;font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--ink-soft);cursor:pointer;}
+  .tabs button.active{background:var(--accent);color:var(--ink);}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 4px 16px rgba(43,38,32,.05);}
+  .drop{border:2px dashed var(--line);border-radius:16px;padding:36px 16px;text-align:center;cursor:pointer;background:var(--bg);transition:border-color .15s;}
+  .drop:hover{border-color:var(--accent);}
+  .drop.drop-active{border-color:var(--accent);background:var(--accent-soft);}
+  .slot.drop-active{border-color:var(--accent);background:var(--accent-soft);}
+  .drop .icon{font-size:2rem;margin-bottom:8px;}
+  .drop p{margin:0;color:var(--ink-soft);font-size:.9rem;}
+  .drop input{display:none;}
+  .preview-wrap{margin-top:20px;text-align:center;}
+  canvas{max-width:100%;height:auto;border-radius:10px;}
+  .crop-editor-wrap{margin-top:18px;}
+  .crop-editor-canvas{width:100%;height:auto;border-radius:10px;cursor:grab;touch-action:none;display:block;box-shadow:0 4px 14px rgba(43,38,32,.1);}
+  .crop-editor-canvas:active{cursor:grabbing;}
+  .zoom-row{display:flex;align-items:center;gap:12px;margin-top:12px;color:var(--ink-soft);}
+  .zoom-row span{font-size:1rem;flex-shrink:0;}
+  .zoom-row input{flex:1;}
+  .compare-wrap{position:relative;max-width:100%;margin:0 auto;border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(43,38,32,.14);touch-action:none;line-height:0;}
+  .compare-wrap canvas{display:block;width:100%;height:auto;border-radius:0;}
+  #filterCanvas{position:absolute;inset:0;}
+  .compare-handle{position:absolute;top:0;bottom:0;width:0;pointer-events:none;}
+  .compare-handle::before{content:"";position:absolute;top:0;bottom:0;left:0;width:2px;background:#fff;box-shadow:0 0 6px rgba(0,0,0,.4);}
+  .compare-handle-grip{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.3);pointer-events:auto;cursor:ew-resize;font-size:.95rem;}
+  .compare-label{position:absolute;top:10px;font-size:.68rem;font-weight:700;letter-spacing:.05em;color:#fff;background:rgba(0,0,0,.45);padding:3px 9px;border-radius:100px;pointer-events:none;}
+  .compare-label.before{left:10px;} .compare-label.after{right:10px;}
+  .styles{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .style-pill{border:1.5px solid var(--line);background:var(--bg);padding:8px 14px;border-radius:100px;font-size:.82rem;font-weight:600;cursor:pointer;color:var(--ink-soft);}
+  .style-pill.active{background:var(--accent);border-color:var(--accent);color:var(--ink);}
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
+  .toggle-row label.txt{font-size:.88rem;font-weight:600;}
+  .switch{position:relative;width:44px;height:26px;display:inline-block;cursor:pointer;flex-shrink:0;}
+  .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;}
+  .slider{position:absolute;inset:0;background:var(--line);border-radius:100px;transition:.15s;pointer-events:none;}
+  .slider::before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+  .switch input:checked + .slider{background:var(--accent);}
+  .switch input:checked + .slider::before{transform:translateX(18px);}
+  .btn-row{display:flex;gap:10px;margin-top:18px;}
+  .btn-primary{flex:2;background:var(--accent);color:var(--ink);border:none;font-family:var(--display);font-weight:700;font-size:1rem;padding:14px;border-radius:12px;cursor:pointer;}
+  .btn-primary:hover{background:#E56A0F;}
+  .btn-primary:disabled{background:var(--line);color:var(--ink-soft);cursor:not-allowed;}
+  .btn-secondary{flex:1;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);font-family:var(--display);font-weight:700;font-size:.92rem;padding:14px 8px;border-radius:12px;cursor:pointer;}
+  .btn-secondary:hover{background:var(--accent-soft);border-color:var(--accent);}
+  .btn-secondary:disabled{color:var(--ink-soft);cursor:not-allowed;opacity:.5;}
+  .btn-reset{width:100%;margin-top:10px;background:none;border:none;color:var(--ink-soft);font-family:var(--sans);font-size:.85rem;font-weight:600;padding:8px;cursor:pointer;text-decoration:underline;}
+  .layout-row{display:flex;gap:8px;margin-bottom:16px;}
+  .layout-pill{flex:1;border:1.5px solid var(--line);background:var(--bg);padding:10px 4px;border-radius:10px;font-family:var(--display);font-weight:700;font-size:.82rem;cursor:pointer;color:var(--ink-soft);text-align:center;}
+  .layout-pill.active{background:var(--accent);border-color:var(--accent);color:var(--ink);}
+  .slots{display:grid;gap:10px;}
+  .slots.cols-1{grid-template-columns:1fr;}
+  .slots.cols-2{grid-template-columns:1fr 1fr;}
+  .slots.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  .slot{aspect-ratio:1;border:2px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--bg);position:relative;overflow:hidden;font-size:.8rem;color:var(--ink-soft);touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
+  .slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;pointer-events:none;}
+  .slot input{display:none;}
+  .slot .num{position:absolute;top:6px;left:8px;font-family:var(--display);font-weight:700;font-size:.7rem;color:var(--ink-soft);z-index:2;background:rgba(255,255,255,.85);padding:1px 6px;border-radius:100px;}
+  .slot.dragging-source{opacity:.35;}
+  .drag-ghost{position:fixed;z-index:999;pointer-events:none;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);transform:scale(1.06) rotate(-2deg);opacity:.95;}
+  .drag-ghost img{width:100%;height:100%;object-fit:cover;}
+  .swatches{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+  .swatch{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid transparent;}
+  .swatch.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--card), 0 0 0 3px var(--accent);}
+  .disclaimer{font-size:.78rem;color:var(--ink-soft);margin-top:16px;text-align:center;}
+  footer{text-align:center;margin-top:30px;font-size:.78rem;color:var(--ink-soft);}
+  footer a{color:var(--ink-soft);}
+  .section-label{font-size:.76rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin:16px 0 8px;}
+  .section-label:first-child{margin-top:0;}
+  .slider-row{margin-bottom:14px;}
+  .slider-label{display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin-bottom:6px;}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--line);border-radius:4px;outline:none;margin:0;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);border:3px solid #fff;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.25);}
+  .text-input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font-family:var(--sans);font-size:.92rem;background:var(--bg);color:var(--ink);}
+  .select-input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font-family:var(--sans);font-size:.92rem;background:var(--bg);color:var(--ink);margin-top:10px;}
+  section.seo{margin:44px 0;}
+  section.seo h2{font-family:var(--display);font-size:1.25rem;margin:0 0 12px;}
+  section.seo p{color:var(--ink-soft);font-size:.92rem;}
+  section.seo ol{color:var(--ink-soft);font-size:.92rem;padding-left:20px;}
+  section.seo ol li{margin-bottom:8px;}
+  details.faq{border-bottom:1px solid var(--line);padding:13px 0;}
+  details.faq summary{cursor:pointer;font-weight:700;font-size:.9rem;list-style:none;display:flex;justify-content:space-between;}
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq summary::after{content:"+";color:var(--accent);}
+  details.faq[open] summary::after{content:"–";}
+  details.faq p{color:var(--ink-soft);font-size:.87rem;margin:8px 0 0;}
+  @media (max-width:480px){
+    .card{padding:16px;} .logo{font-size:1.25rem;} .layout-pill{font-size:.74rem;padding:9px 2px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="header-top">
+      <button class="lang-btn" onclick="toggleLangMenu()"><span id="langBtnLabel">🇺🇸 EN</span> ▾</button>
+      <div class="lang-menu" id="langMenu">
+        <a class="lang-option" href="https://analogcam.app/">🇺🇸 English</a>
+        <a class="lang-option" href="https://analogcam.app/ko/">🇰🇷 한국어</a>
+        <a class="lang-option" href="https://analogcam.app/ja/">🇯🇵 日本語</a>
+        <a class="lang-option" href="https://analogcam.app/es/">🇪🇸 Español</a>
+        <a class="lang-option" href="https://analogcam.app/fr/">🇫🇷 Français</a>
+      </div>
+    </div>
+    <div class="header-center">
+      <h1 class="logo"><span class="dot"></span>ANALOGCAM LAB</h1>
+      <p data-i18n="tagline">진짜 필름 질감 — 그레인, 라이트 리크까지. 사진은 절대 서버로 전송되지 않아요.</p>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button id="tabFilter" class="active" onclick="switchTab('filter')" data-i18n="tabFilter">필름 필터</button>
+    <button id="tabStrip" onclick="switchTab('strip')" data-i18n="tabStrip">포토 그리드</button>
+  </div>
+
+  <!-- FILM FILTER PANEL -->
+  <div id="panelFilter" class="panel active">
+    <div class="card">
+      <div class="drop" id="dropFilter" onclick="document.getElementById('fileFilter').click()">
+        <div class="icon">📷</div>
+        <p><b data-i18n="dropTitle">탭해서 사진 업로드</b><br><span data-i18n="dropSub">또는 드래그 앤 드롭</span></p>
+        <input type="file" id="fileFilter" accept="image/*" capture="environment">
+      </div>
+
+      <div class="crop-editor-wrap" id="cropEditorWrap" style="display:none;">
+        <p class="section-label" data-i18n="positionLabel">위치 및 확대</p>
+        <canvas id="cropEditorCanvas" class="crop-editor-canvas"></canvas>
+        <div class="zoom-row">
+          <span>−</span>
+          <input type="range" id="zoomSlider" min="100" max="300" value="100" oninput="onZoomInput(this.value)">
+          <span>+</span>
+        </div>
+        <p class="disclaimer" data-i18n="cropHint">사진을 드래그해서 위치를 조정하고, 슬라이더로 확대하세요</p>
+      </div>
+
+      <div class="preview-wrap" id="filterPreviewWrap" style="display:none;">
+        <div class="compare-wrap" id="compareWrap">
+          <canvas id="filterCanvasOriginal"></canvas>
+          <canvas id="filterCanvas"></canvas>
+          <div class="compare-label before" data-i18n="beforeLabel">이전</div>
+          <div class="compare-label after" data-i18n="afterLabel">이후</div>
+          <div class="compare-handle" id="compareHandle"><div class="compare-handle-grip">↔</div></div>
+        </div>
+      </div>
+
+      <p class="section-label" data-i18n="exportSizeLabel">내보내기 크기</p>
+      <div class="styles">
+        <button class="style-pill active" data-aspect="square" onclick="setAspect('square')" data-i18n="aspectSquare">정사각형 1:1</button>
+        <button class="style-pill" data-aspect="feed" onclick="setAspect('feed')" data-i18n="aspectFeed">피드용 4:5</button>
+        <button class="style-pill" data-aspect="story" onclick="setAspect('story')" data-i18n="aspectStory">스토리용 9:16</button>
+      </div>
+
+      <p class="section-label" data-i18n="filmStockLabel">필름 스타일</p>
+      <div class="styles">
+        <button class="style-pill active" data-style="warm" onclick="setStyle('warm')" data-i18n="warmFilm">웜 필름</button>
+        <button class="style-pill" data-style="digicam" onclick="setStyle('digicam')" data-i18n="digicamStyle">Y2K 디지캠</button>
+        <button class="style-pill" data-style="bw" onclick="setStyle('bw')" data-i18n="bwFilm">흑백 필름</button>
+        <button class="style-pill" data-style="kodak" onclick="setStyle('kodak')" data-i18n="kodakStyle">코닥 골드</button>
+        <button class="style-pill" data-style="fuji" onclick="setStyle('fuji')" data-i18n="fujiStyle">후지</button>
+        <button class="style-pill" data-style="polaroid" onclick="setStyle('polaroid')" data-i18n="polaroidStyle">폴라로이드</button>
+      </div>
+
+      <p class="section-label" data-i18n="fineTuneLabel">세부 조정</p>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="intensity">필터 강도</span><span id="valIntensity">100</span></div>
+        <input type="range" min="0" max="100" value="100" oninput="updateAdj('intensity', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="brightness">밝기</span><span id="valBrightness">0</span></div>
+        <input type="range" min="-50" max="50" value="0" oninput="updateAdj('brightness', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="contrast">대비</span><span id="valContrast">0</span></div>
+        <input type="range" min="-50" max="50" value="0" oninput="updateAdj('contrast', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="saturation">채도</span><span id="valSaturation">0</span></div>
+        <input type="range" min="-100" max="100" value="0" oninput="updateAdj('saturation', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="warmth">색온도</span><span id="valWarmth">0</span></div>
+        <input type="range" min="-50" max="50" value="0" oninput="updateAdj('warmth', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="grain">그레인</span><span id="valGrain">50</span></div>
+        <input type="range" min="0" max="100" value="50" oninput="updateAdj('grain', this.value)">
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span data-i18n="vignette">비네트</span><span id="valVignette">60</span></div>
+        <input type="range" min="0" max="100" value="60" oninput="updateAdj('vignette', this.value)">
+      </div>
+
+      <div class="toggle-row">
+        <label class="txt" for="dateStampToggle" data-i18n="dateStamp">날짜 스탬프</label>
+        <label class="switch"><input type="checkbox" id="dateStampToggle" checked onchange="renderFilter()"><span class="slider"></span></label>
+      </div>
+      <p class="section-label" data-i18n="stampColorLabel">날짜 스탬프 색상</p>
+      <div class="swatches" id="stampColorSwatches"></div>
+
+      <div class="toggle-row">
+        <label class="txt" for="leakToggle" data-i18n="lightLeak">라이트 리크</label>
+        <label class="switch"><input type="checkbox" id="leakToggle" checked onchange="renderFilter()"><span class="slider"></span></label>
+      </div>
+      <div class="toggle-row">
+        <label class="txt" for="watermarkToggle" data-i18n="watermark">워터마크</label>
+        <label class="switch"><input type="checkbox" id="watermarkToggle" checked onchange="renderFilter()"><span class="slider"></span></label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="downloadFilterBtn" onclick="downloadCanvas('filterCanvas','analogcam-photo.jpg')" disabled data-i18n="downloadBtn">다운로드</button>
+        <button class="btn-secondary" id="shareFilterBtn" onclick="shareCanvas('filterCanvas','analogcam-photo.jpg')" disabled data-i18n="shareBtn">공유</button>
+      </div>
+      <button class="btn-reset" onclick="resetFilter()" data-i18n="resetBtn">다른 사진 선택</button>
+      <p class="disclaimer" data-i18n="filterDisclaimer">사진은 브라우저 안에서만 처리되며 어디에도 업로드되지 않습니다.</p>
+    </div>
+  </div>
+
+  <!-- PHOTO GRID PANEL -->
+  <div id="panelStrip" class="panel">
+    <div class="card">
+      <p class="section-label" data-i18n="layoutLabel">레이아웃</p>
+      <div class="layout-row">
+        <div class="layout-pill active" data-layout="col4" onclick="setLayout('col4')">1 × 4</div>
+        <div class="layout-pill" data-layout="grid2x2" onclick="setLayout('grid2x2')">2 × 2</div>
+        <div class="layout-pill" data-layout="grid2x3" onclick="setLayout('grid2x3')">2 × 3</div>
+      </div>
+
+      <div class="slots cols-1" id="stripSlots"></div>
+
+      <p class="section-label" data-i18n="filmStockLabel">필름 스타일</p>
+      <div class="styles">
+        <button class="style-pill active" data-stripstyle="warm" onclick="setStripStyle('warm')" data-i18n="warmFilm">웜 필름</button>
+        <button class="style-pill" data-stripstyle="digicam" onclick="setStripStyle('digicam')" data-i18n="digicamStyle">Y2K 디지캠</button>
+        <button class="style-pill" data-stripstyle="bw" onclick="setStripStyle('bw')" data-i18n="bwFilm">흑백 필름</button>
+        <button class="style-pill" data-stripstyle="kodak" onclick="setStripStyle('kodak')" data-i18n="kodakStyle">코닥 골드</button>
+        <button class="style-pill" data-stripstyle="fuji" onclick="setStripStyle('fuji')" data-i18n="fujiStyle">후지</button>
+        <button class="style-pill" data-stripstyle="polaroid" onclick="setStripStyle('polaroid')" data-i18n="polaroidStyle">폴라로이드</button>
+      </div>
+      <p class="disclaimer" style="margin-top:8px;" data-i18n="fineTuneNote">Film Filter 탭의 세부 조정 슬라이더가 여기도 동일하게 적용됩니다.</p>
+
+      <p class="section-label" data-i18n="frameColorLabel">프레임 색상</p>
+      <div class="swatches">
+        <div class="swatch active" style="background:#FFFFFF;border:2px solid #E7DCC8;" onclick="setFrameColor('#FFFFFF', this)"></div>
+        <div class="swatch" style="background:#1C1A17;" onclick="setFrameColor('#1C1A17', this)"></div>
+        <div class="swatch" style="background:#FFC9DE;" onclick="setFrameColor('#FFC9DE', this)"></div>
+        <div class="swatch" style="background:#C9E8D8;" onclick="setFrameColor('#C9E8D8', this)"></div>
+        <div class="swatch" style="background:#FFE7D3;" onclick="setFrameColor('#FFE7D3', this)"></div>
+      </div>
+
+      <p class="section-label" data-i18n="captionLabel">캡션 (비워두면 표시 안 함)</p>
+      <input type="text" class="text-input" id="captionText" value="ANALOGCAM LAB" oninput="renderStripIfReady()">
+      <select class="select-input" id="captionFont" onchange="renderStripIfReady()">
+        <option value="Space Grotesk" data-i18n="fontModern">모던 — Space Grotesk</option>
+        <option value="VT323" data-i18n="fontRetro">레트로 디지털 — VT323</option>
+        <option value="Inter" data-i18n="fontClean">클린 — Inter</option>
+        <option value="Caveat" data-i18n="fontHandwritten">손글씨 — Caveat</option>
+      </select>
+      <p class="section-label" data-i18n="textColorLabel">캡션 색상</p>
+      <div class="swatches" id="captionColorSwatches"></div>
+
+      <div class="preview-wrap" id="stripPreviewWrap" style="display:none;">
+        <canvas id="stripCanvas"></canvas>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" id="downloadStripBtn" onclick="downloadCanvas('stripCanvas','photo-grid.jpg')" disabled data-i18n="downloadBtn">다운로드</button>
+        <button class="btn-secondary" id="shareStripBtn" onclick="shareCanvas('stripCanvas','photo-grid.jpg')" disabled data-i18n="shareBtn">공유</button>
+      </div>
+      <button class="btn-reset" onclick="resetStrip()" data-i18n="resetGridBtn">전체 사진 지우기</button>
+      <p class="disclaimer" data-i18n="gridDisclaimer">모든 칸에 사진을 올려야 그리드가 완성됩니다. 서버로 업로드되지 않습니다.</p>
+    </div>
+  </div>
+
+  <section class="seo">
+    <h2 data-i18n="seoHeading1">브라우저에서 완성되는 진짜 필름 감성</h2>
+    <p data-i18n="seoP1">Analogcam Lab은 색감만 바꾸는 게 아니라 그레인, 라이트 리크, 헤일레이션, 바랜 블랙톤까지 실제 필름 카메라의 질감을 재현합니다. 모든 처리는 HTML5 Canvas API로 브라우저 안에서 이루어지며, 서버로 업로드되는 데이터는 전혀 없습니다.</p>
+  </section>
+  <section class="seo">
+    <h2 data-i18n="seoHeading2">사용 방법</h2>
+    <ol>
+      <li data-i18n="seoStep1">사진을 업로드하세요 (포토 그리드는 4~6장). 갤러리에서 선택하거나 모바일에서 바로 촬영할 수 있어요.</li>
+      <li data-i18n="seoStep2">필름 스타일을 고르고 밝기·대비·채도·색온도·그레인·비네트를 세부 조정하세요.</li>
+      <li data-i18n="seoStep3">JPG로 다운로드하거나, 모바일에서 바로 인스타그램으로 공유하세요.</li>
+    </ol>
+  </section>
+  <section class="seo">
+    <h2 data-i18n="faqHeading">자주 묻는 질문</h2>
+    <details class="faq"><summary data-i18n="faqQ1">Analogcam Lab은 무료인가요?</summary><p data-i18n="faqA1">네, 완전 무료이며 회원가입도 필요 없습니다.</p></details>
+    <details class="faq"><summary data-i18n="faqQ2">사진이 어딘가에 업로드되나요?</summary><p data-i18n="faqA2">아니요. 모든 처리는 Canvas API로 브라우저 안에서만 이루어지며 사진은 기기 밖으로 나가지 않습니다.</p></details>
+    <details class="faq"><summary data-i18n="faqQ3">모바일에서도 되나요?</summary><p data-i18n="faqA3">네, 완전 반응형이며 모바일 카메라로 바로 촬영하고 인스타그램 등으로 원터치 공유도 가능합니다.</p></details>
+    <details class="faq"><summary data-i18n="faqQ4">어떤 그리드 레이아웃을 지원하나요?</summary><p data-i18n="faqA4">1×4(세로형 인생네컷 스타일), 2×2, 2×3을 지원하며 모든 사진에 같은 필름 질감이 적용됩니다.</p></details>
+  </section>
+
+  <footer>
+    <a href="/privacy.html" data-i18n="navPrivacy">개인정보처리방침</a> · <a href="/terms.html" data-i18n="navTerms">이용약관</a><br>
+    Made with Analogcam Lab
+  </footer>
+</div>
+
+<script>
+/* ============ i18n ============ */
+const translations = {
+  en: {
+    tagline:"Real film texture — grain, light leaks & all. Nothing ever leaves your device.",
+    tabFilter:"Film Filter", tabStrip:"Photo Grid",
+    dropTitle:"Tap to upload a photo", dropSub:"or drag & drop",
+    positionLabel:"Position & zoom", cropHint:"Drag the photo to reposition, use the slider to zoom in",
+    exportSizeLabel:"Export size", aspectSquare:"Square 1:1", aspectFeed:"Feed 4:5", aspectStory:"Story 9:16",
+    filmStockLabel:"Film stock", warmFilm:"Warm Film", digicamStyle:"Y2K Digicam", bwFilm:"B&W Film",
+    kodakStyle:"Kodak Gold", fujiStyle:"Fuji", polaroidStyle:"Polaroid",
+    fineTuneLabel:"Fine-tune", intensity:"Filter intensity", brightness:"Brightness", contrast:"Contrast", saturation:"Saturation",
+    warmth:"Warmth", grain:"Grain", vignette:"Vignette",
+    dateStamp:"Date stamp", stampColorLabel:"Date stamp color", lightLeak:"Light leak", watermark:"Watermark",
+    downloadBtn:"Download", shareBtn:"Share", resetBtn:"Choose another photo", resetGridBtn:"Clear all photos",
+    beforeLabel:"BEFORE", afterLabel:"AFTER",
+    filterDisclaimer:"Your photo is processed entirely in your browser and is never uploaded anywhere.",
+    layoutLabel:"Layout", fineTuneNote:"Fine-tune sliders on the Film Filter tab apply here too.",
+    frameColorLabel:"Frame color", captionLabel:"Caption (leave empty to hide)",
+    fontModern:"Modern — Space Grotesk", fontRetro:"Retro Digital — VT323", fontClean:"Clean — Inter", fontHandwritten:"Handwritten — Caveat",
+    textColorLabel:"Caption color", gridDisclaimer:"Upload every slot to generate your grid. Nothing is uploaded to any server.",
+    seoHeading1:"A real film look, made in your browser",
+    seoP1:"Analogcam Lab recreates the texture of real film cameras — grain, light leaks, halation and faded blacks — instead of just shifting colors. Every photo is processed locally in your browser using the HTML5 Canvas API, so nothing is ever uploaded to a server.",
+    seoHeading2:"How it works",
+    seoStep1:"Upload a photo (or 4–6 for the Photo Grid tool) from your camera roll or take one directly on mobile.",
+    seoStep2:"Pick a film stock and fine-tune brightness, contrast, saturation, warmth, grain and vignette.",
+    seoStep3:"Download the result as a JPG, or share it straight to Instagram from mobile.",
+    faqHeading:"FAQ",
+    faqQ1:"Is Analogcam Lab free?", faqA1:"Yes, completely free, with no account or sign-up required.",
+    faqQ2:"Are my photos uploaded anywhere?", faqA2:"No. All processing happens locally in your browser using the Canvas API — your photos never leave your device.",
+    faqQ3:"Does it work on mobile?", faqA3:"Yes, Analogcam Lab is fully responsive and supports taking photos directly with your phone's camera, plus one-tap sharing to Instagram and other apps.",
+    faqQ4:"What photo grid sizes are supported?", faqA4:"1×4 (a classic vertical photo-booth strip), 2×2, and 2×3 — each with the same film texture applied to every photo.",
+    navPrivacy:"Privacy Policy", navTerms:"Terms of Use",
+  },
+  ko: {
+    tagline:"진짜 필름 질감 — 그레인, 라이트 리크까지. 사진은 절대 서버로 전송되지 않아요.",
+    tabFilter:"필름 필터", tabStrip:"포토 그리드",
+    dropTitle:"탭해서 사진 업로드", dropSub:"또는 드래그 앤 드롭",
+    positionLabel:"위치 및 확대", cropHint:"사진을 드래그해서 위치를 조정하고, 슬라이더로 확대하세요",
+    exportSizeLabel:"내보내기 크기", aspectSquare:"정사각형 1:1", aspectFeed:"피드용 4:5", aspectStory:"스토리용 9:16",
+    filmStockLabel:"필름 스타일", warmFilm:"웜 필름", digicamStyle:"Y2K 디지캠", bwFilm:"흑백 필름",
+    kodakStyle:"코닥 골드", fujiStyle:"후지", polaroidStyle:"폴라로이드",
+    fineTuneLabel:"세부 조정", intensity:"필터 강도", brightness:"밝기", contrast:"대비", saturation:"채도",
+    warmth:"색온도", grain:"그레인", vignette:"비네트",
+    dateStamp:"날짜 스탬프", stampColorLabel:"날짜 스탬프 색상", lightLeak:"라이트 리크", watermark:"워터마크",
+    downloadBtn:"다운로드", shareBtn:"공유", resetBtn:"다른 사진 선택", resetGridBtn:"전체 사진 지우기",
+    beforeLabel:"이전", afterLabel:"이후",
+    filterDisclaimer:"사진은 브라우저 안에서만 처리되며 어디에도 업로드되지 않습니다.",
+    layoutLabel:"레이아웃", fineTuneNote:"Film Filter 탭의 세부 조정 슬라이더가 여기도 동일하게 적용됩니다.",
+    frameColorLabel:"프레임 색상", captionLabel:"캡션 (비워두면 표시 안 함)",
+    fontModern:"모던 — Space Grotesk", fontRetro:"레트로 디지털 — VT323", fontClean:"클린 — Inter", fontHandwritten:"손글씨 — Caveat",
+    textColorLabel:"캡션 색상", gridDisclaimer:"모든 칸에 사진을 올려야 그리드가 완성됩니다. 서버로 업로드되지 않습니다.",
+    seoHeading1:"브라우저에서 완성되는 진짜 필름 감성",
+    seoP1:"Analogcam Lab은 색감만 바꾸는 게 아니라 그레인, 라이트 리크, 헤일레이션, 바랜 블랙톤까지 실제 필름 카메라의 질감을 재현합니다. 모든 처리는 HTML5 Canvas API로 브라우저 안에서 이루어지며, 서버로 업로드되는 데이터는 전혀 없습니다.",
+    seoHeading2:"사용 방법",
+    seoStep1:"사진을 업로드하세요 (포토 그리드는 4~6장). 갤러리에서 선택하거나 모바일에서 바로 촬영할 수 있어요.",
+    seoStep2:"필름 스타일을 고르고 밝기·대비·채도·색온도·그레인·비네트를 세부 조정하세요.",
+    seoStep3:"JPG로 다운로드하거나, 모바일에서 바로 인스타그램으로 공유하세요.",
+    faqHeading:"자주 묻는 질문",
+    faqQ1:"Analogcam Lab은 무료인가요?", faqA1:"네, 완전 무료이며 회원가입도 필요 없습니다.",
+    faqQ2:"사진이 어딘가에 업로드되나요?", faqA2:"아니요. 모든 처리는 Canvas API로 브라우저 안에서만 이루어지며 사진은 기기 밖으로 나가지 않습니다.",
+    faqQ3:"모바일에서도 되나요?", faqA3:"네, 완전 반응형이며 모바일 카메라로 바로 촬영하고 인스타그램 등으로 원터치 공유도 가능합니다.",
+    faqQ4:"어떤 그리드 레이아웃을 지원하나요?", faqA4:"1×4(세로형 인생네컷 스타일), 2×2, 2×3을 지원하며 모든 사진에 같은 필름 질감이 적용됩니다.",
+    navPrivacy:"개인정보처리방침", navTerms:"이용약관",
+  },
+  ja: {
+    tagline:"本物のフィルム質感 — 粒子感やライトリークも。写真は一切サーバーに送信されません。",
+    tabFilter:"フィルムフィルター", tabStrip:"フォトグリッド",
+    dropTitle:"タップして写真をアップロード", dropSub:"またはドラッグ＆ドロップ",
+    positionLabel:"位置とズーム", cropHint:"写真をドラッグして位置を調整し、スライダーでズームできます",
+    exportSizeLabel:"書き出しサイズ", aspectSquare:"正方形 1:1", aspectFeed:"フィード用 4:5", aspectStory:"ストーリー用 9:16",
+    filmStockLabel:"フィルムスタイル", warmFilm:"ウォームフィルム", digicamStyle:"Y2Kデジカメ", bwFilm:"白黒フィルム",
+    kodakStyle:"コダックゴールド", fujiStyle:"フジ", polaroidStyle:"ポラロイド",
+    fineTuneLabel:"微調整", intensity:"フィルター強度", brightness:"明るさ", contrast:"コントラスト", saturation:"彩度",
+    warmth:"色温度", grain:"グレイン", vignette:"ビネット",
+    dateStamp:"日付スタンプ", stampColorLabel:"日付スタンプの色", lightLeak:"ライトリーク", watermark:"透かし",
+    downloadBtn:"ダウンロード", shareBtn:"共有", resetBtn:"別の写真を選ぶ", resetGridBtn:"すべて消去",
+    beforeLabel:"BEFORE", afterLabel:"AFTER",
+    filterDisclaimer:"写真はブラウザ内でのみ処理され、どこにもアップロードされません。",
+    layoutLabel:"レイアウト", fineTuneNote:"Film Filterタブの微調整スライダーはこちらにも適用されます。",
+    frameColorLabel:"フレームの色", captionLabel:"キャプション（空欄で非表示）",
+    fontModern:"モダン — Space Grotesk", fontRetro:"レトロデジタル — VT323", fontClean:"クリーン — Inter", fontHandwritten:"手書き — Caveat",
+    textColorLabel:"キャプションの色", gridDisclaimer:"すべてのマスに写真をアップロードするとグリッドが完成します。サーバーへの送信はありません。",
+    seoHeading1:"ブラウザで完成する本物のフィルムルック",
+    seoP1:"Analogcam Labは色調だけでなく、グレイン、ライトリーク、ハレーション、褪せた黒まで本物のフィルムカメラの質感を再現します。すべての処理はHTML5 Canvas APIでブラウザ内に完結し、サーバーへのアップロードは一切ありません。",
+    seoHeading2:"使い方",
+    seoStep1:"写真をアップロードしてください（フォトグリッドは4〜6枚）。カメラロールから選ぶか、モバイルで直接撮影できます。",
+    seoStep2:"フィルムスタイルを選び、明るさ・コントラスト・彩度・色温度・グレイン・ビネットを調整します。",
+    seoStep3:"JPGでダウンロード、またはモバイルからInstagramへ直接共有できます。",
+    faqHeading:"よくある質問",
+    faqQ1:"Analogcam Labは無料ですか？", faqA1:"はい、完全無料でアカウント登録も不要です。",
+    faqQ2:"写真はどこかにアップロードされますか？", faqA2:"いいえ。すべての処理はCanvas APIでブラウザ内のみで行われ、写真が端末外に出ることはありません。",
+    faqQ3:"モバイルでも使えますか？", faqA3:"はい、完全レスポンシブでスマホのカメラで直接撮影でき、Instagramなどへワンタップで共有もできます。",
+    faqQ4:"どんなグリッドレイアウトに対応していますか？", faqA4:"1×4（縦型フォトブーススタイル）、2×2、2×3に対応しており、すべての写真に同じフィルム質感が適用されます。",
+    navPrivacy:"プライバシーポリシー", navTerms:"利用規約",
+  },
+  es: {
+    tagline:"Textura de película real — grano, fugas de luz y más. Tus fotos nunca salen de tu dispositivo.",
+    tabFilter:"Filtro de película", tabStrip:"Cuadrícula de fotos",
+    dropTitle:"Toca para subir una foto", dropSub:"o arrastra y suelta",
+    positionLabel:"Posición y zoom", cropHint:"Arrastra la foto para reposicionarla y usa el control deslizante para hacer zoom",
+    exportSizeLabel:"Tamaño de exportación", aspectSquare:"Cuadrado 1:1", aspectFeed:"Feed 4:5", aspectStory:"Historia 9:16",
+    filmStockLabel:"Tipo de película", warmFilm:"Película cálida", digicamStyle:"Digicam Y2K", bwFilm:"Película B&N",
+    kodakStyle:"Kodak Gold", fujiStyle:"Fuji", polaroidStyle:"Polaroid",
+    fineTuneLabel:"Ajustes", intensity:"Intensidad del filtro", brightness:"Brillo", contrast:"Contraste", saturation:"Saturación",
+    warmth:"Calidez", grain:"Grano", vignette:"Viñeta",
+    dateStamp:"Sello de fecha", stampColorLabel:"Color del sello de fecha", lightLeak:"Fuga de luz", watermark:"Marca de agua",
+    downloadBtn:"Descargar", shareBtn:"Compartir", resetBtn:"Elegir otra foto", resetGridBtn:"Borrar todas las fotos",
+    beforeLabel:"ANTES", afterLabel:"DESPUÉS",
+    filterDisclaimer:"Tu foto se procesa por completo en tu navegador y nunca se sube a ningún lugar.",
+    layoutLabel:"Diseño", fineTuneNote:"Los ajustes de la pestaña Filtro de película también se aplican aquí.",
+    frameColorLabel:"Color del marco", captionLabel:"Leyenda (déjalo vacío para ocultarla)",
+    fontModern:"Moderno — Space Grotesk", fontRetro:"Digital retro — VT323", fontClean:"Limpio — Inter", fontHandwritten:"Manuscrito — Caveat",
+    textColorLabel:"Color de la leyenda", gridDisclaimer:"Sube una foto en cada casilla para generar tu cuadrícula. No se sube a ningún servidor.",
+    seoHeading1:"Un look de película real, hecho en tu navegador",
+    seoP1:"Analogcam Lab recrea la textura de las cámaras de película reales — grano, fugas de luz, halación y negros desvanecidos — en lugar de solo cambiar los colores. Cada foto se procesa localmente en tu navegador con la API Canvas de HTML5, así que nunca se sube a un servidor.",
+    seoHeading2:"Cómo funciona",
+    seoStep1:"Sube una foto (o de 4 a 6 para la cuadrícula) desde tu galería o tómala directamente en tu móvil.",
+    seoStep2:"Elige un tipo de película y ajusta brillo, contraste, saturación, calidez, grano y viñeta.",
+    seoStep3:"Descarga el resultado en JPG o compártelo directamente en Instagram desde el móvil.",
+    faqHeading:"Preguntas frecuentes",
+    faqQ1:"¿Analogcam Lab es gratis?", faqA1:"Sí, totalmente gratis, sin necesidad de cuenta ni registro.",
+    faqQ2:"¿Se suben mis fotos a algún lugar?", faqA2:"No. Todo el procesamiento ocurre localmente en tu navegador con la API Canvas — tus fotos nunca salen de tu dispositivo.",
+    faqQ3:"¿Funciona en el móvil?", faqA3:"Sí, Analogcam Lab es totalmente responsivo, permite tomar fotos con la cámara de tu teléfono y compartirlas directamente en Instagram.",
+    faqQ4:"¿Qué tamaños de cuadrícula están disponibles?", faqA4:"1×4 (una tira vertical clásica de fotomatón), 2×2 y 2×3, todas con la misma textura de película aplicada a cada foto.",
+    navPrivacy:"Política de privacidad", navTerms:"Términos de uso",
+  },
+  fr: {
+    tagline:"Une vraie texture argentique — grain, fuites de lumière et plus. Vos photos ne quittent jamais votre appareil.",
+    tabFilter:"Filtre argentique", tabStrip:"Grille photo",
+    dropTitle:"Touchez pour importer une photo", dropSub:"ou glissez-déposez",
+    positionLabel:"Position et zoom", cropHint:"Faites glisser la photo pour la repositionner, utilisez le curseur pour zoomer",
+    exportSizeLabel:"Taille d'export", aspectSquare:"Carré 1:1", aspectFeed:"Fil d'actualité 4:5", aspectStory:"Story 9:16",
+    filmStockLabel:"Type de pellicule", warmFilm:"Pellicule chaude", digicamStyle:"Digicam Y2K", bwFilm:"Pellicule N&B",
+    kodakStyle:"Kodak Gold", fujiStyle:"Fuji", polaroidStyle:"Polaroid",
+    fineTuneLabel:"Réglages", intensity:"Intensité du filtre", brightness:"Luminosité", contrast:"Contraste", saturation:"Saturation",
+    warmth:"Chaleur", grain:"Grain", vignette:"Vignettage",
+    dateStamp:"Horodatage", stampColorLabel:"Couleur de l'horodatage", lightLeak:"Fuite de lumière", watermark:"Filigrane",
+    downloadBtn:"Télécharger", shareBtn:"Partager", resetBtn:"Choisir une autre photo", resetGridBtn:"Tout effacer",
+    beforeLabel:"AVANT", afterLabel:"APRÈS",
+    filterDisclaimer:"Votre photo est traitée entièrement dans votre navigateur et n'est jamais téléversée.",
+    layoutLabel:"Disposition", fineTuneNote:"Les réglages de l'onglet Filtre argentique s'appliquent aussi ici.",
+    frameColorLabel:"Couleur du cadre", captionLabel:"Légende (laissez vide pour masquer)",
+    fontModern:"Moderne — Space Grotesk", fontRetro:"Numérique rétro — VT323", fontClean:"Épuré — Inter", fontHandwritten:"Manuscrit — Caveat",
+    textColorLabel:"Couleur de la légende", gridDisclaimer:"Remplissez chaque case pour générer votre grille. Rien n'est envoyé à un serveur.",
+    seoHeading1:"Un vrai rendu argentique, fait dans votre navigateur",
+    seoP1:"Analogcam Lab recrée la texture des vrais appareils argentiques — grain, fuites de lumière, halo et noirs délavés — plutôt que de simplement changer les couleurs. Chaque photo est traitée localement dans votre navigateur via l'API Canvas HTML5, rien n'est donc jamais envoyé à un serveur.",
+    seoHeading2:"Comment ça marche",
+    seoStep1:"Importez une photo (ou 4 à 6 pour la grille photo) depuis votre galerie ou prenez-la directement sur mobile.",
+    seoStep2:"Choisissez une pellicule et ajustez luminosité, contraste, saturation, chaleur, grain et vignettage.",
+    seoStep3:"Téléchargez le résultat en JPG, ou partagez-le directement sur Instagram depuis mobile.",
+    faqHeading:"FAQ",
+    faqQ1:"Analogcam Lab est-il gratuit ?", faqA1:"Oui, entièrement gratuit, sans compte ni inscription.",
+    faqQ2:"Mes photos sont-elles envoyées quelque part ?", faqA2:"Non. Tout le traitement se fait localement dans votre navigateur via l'API Canvas — vos photos ne quittent jamais votre appareil.",
+    faqQ3:"Fonctionne-t-il sur mobile ?", faqA3:"Oui, Analogcam Lab est entièrement responsive, permet de prendre des photos avec l'appareil de votre téléphone et de les partager directement sur Instagram.",
+    faqQ4:"Quelles tailles de grille sont disponibles ?", faqA4:"1×4 (une bande verticale façon photomaton), 2×2 et 2×3, chacune avec la même texture argentique appliquée à chaque photo.",
+    navPrivacy:"Politique de confidentialité", navTerms:"Conditions d'utilisation",
+  },
+};
+const LANG_LABELS = { en:"🇺🇸 EN", ko:"🇰🇷 KO", ja:"🇯🇵 JA", es:"🇪🇸 ES", fr:"🇫🇷 FR" };
+let currentLang = 'ko';
+function toggleLangMenu(){ document.getElementById('langMenu').classList.toggle('open'); }
+document.addEventListener('click', (e) => { if (!e.target.closest('.header-top')) document.getElementById('langMenu').classList.remove('open'); });
+function setLanguage(lang){
+  currentLang = lang;
+  document.getElementById('langBtnLabel').textContent = LANG_LABELS[lang];
+  document.getElementById('langMenu').classList.remove('open');
+  document.documentElement.lang = lang;
+  const dict = translations[lang] || translations.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (dict[key]) el.textContent = dict[key]; });
+  try { localStorage.setItem('analogcamlab_lang', lang); } catch(e){}
+}
+(function initLang(){
+  document.getElementById('langBtnLabel').textContent = LANG_LABELS['ko'];
+  document.documentElement.lang = 'ko';
+})();
+
+/* ============ shared state ============ */
+let adjustments = { brightness:0, contrast:0, saturation:0, warmth:0, grain:50, vignette:60, intensity:100 };
+let stampColor = '#FF8A00';
+let captionColor = null;
+
+function updateAdj(key, val){
+  adjustments[key] = parseFloat(val);
+  const labelEl = document.getElementById('val' + key.charAt(0).toUpperCase() + key.slice(1));
+  if (labelEl) labelEl.textContent = val;
+  renderAll();
+}
+function renderAll(){ if (filterImg) renderFilter(); renderStripIfReady(); }
+
+const STAMP_COLORS = ['#FF8A00','#FF3B3B','#FFFFFF','#37D67A','#4EA1FF'];
+const CAPTION_COLORS = ['auto','#2B2620','#FFFFFF','#FF7A1A','#37D67A','#4EA1FF'];
+function buildSwatches(containerId, colors, onPick, activeValue){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  colors.forEach(c => {
+    const sw = document.createElement('div');
+    sw.className = 'swatch' + (c === activeValue ? ' active' : '');
+    if (c === 'auto'){ sw.style.background = 'linear-gradient(135deg,#2B2620 50%,#fff 50%)'; sw.style.border = '2px solid #E7DCC8'; }
+    else { sw.style.background = c; if (c === '#FFFFFF') sw.style.border = '2px solid #E7DCC8'; }
+    sw.onclick = () => { document.querySelectorAll('#' + containerId + ' .swatch').forEach(s => s.classList.remove('active')); sw.classList.add('active'); onPick(c); };
+    el.appendChild(sw);
+  });
+}
+buildSwatches('stampColorSwatches', STAMP_COLORS, (c) => { stampColor = c; renderFilter(); }, stampColor);
+buildSwatches('captionColorSwatches', CAPTION_COLORS, (c) => { captionColor = (c === 'auto') ? null : c; renderStripIfReady(); }, 'auto');
+
+/* ============ shared helpers ============ */
+function loadImageFile(file){
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = e => { const img = new Image(); img.onload = () => resolve(img); img.src = e.target.result; };
+    reader.readAsDataURL(file);
+  });
+}
+function drawCoverAt(ctx, img, x, y, w, h){
+  const imgRatio = img.width / img.height, boxRatio = w / h;
+  let sx, sy, sw, sh;
+  if (imgRatio > boxRatio){ sh = img.height; sw = sh * boxRatio; sx = (img.width - sw) / 2; sy = 0; }
+  else { sw = img.width; sh = sw / boxRatio; sx = 0; sy = (img.height - sh) / 2; }
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+}
+function computeCropRect(img, frameW, frameH, zoom, centerX, centerY){
+  const baseScale = Math.max(frameW/img.width, frameH/img.height);
+  const visW = frameW/(baseScale*zoom), visH = frameH/(baseScale*zoom);
+  const halfW = visW/2, halfH = visH/2;
+  const cx = Math.max(halfW, Math.min(img.width-halfW, centerX));
+  const cy = Math.max(halfH, Math.min(img.height-halfH, centerY));
+  return { sx: cx-halfW, sy: cy-halfH, sw: visW, sh: visH };
+}
+function drawCropped(ctx, img, x, y, w, h, crop){
+  const rect = computeCropRect(img, w, h, crop.zoom, crop.centerX, crop.centerY);
+  ctx.drawImage(img, rect.sx, rect.sy, rect.sw, rect.sh, x, y, w, h);
+}
+function downloadCanvas(id, filename){
+  const canvas = document.getElementById(id);
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/jpeg', 0.92);
+  link.click();
+}
+function shareCanvas(id, filename){
+  const canvas = document.getElementById(id);
+  canvas.toBlob(async (blob) => {
+    try {
+      const file = new File([blob], filename, { type: 'image/jpeg' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })){
+        await navigator.share({ files: [file], title: 'Analogcam Lab' });
+      } else {
+        downloadCanvas(id, filename);
+      }
+    } catch(e){ /* user cancelled the share sheet — no action needed */ }
+  }, 'image/jpeg', 0.92);
+}
+function initShareButtons(){
+  const supported = !!(navigator.share);
+  ['shareFilterBtn','shareStripBtn'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (!supported) btn.style.display = 'none';
+  });
+}
+initShareButtons();
+
+function switchTab(tab){
+  document.getElementById('tabFilter').classList.toggle('active', tab==='filter');
+  document.getElementById('tabStrip').classList.toggle('active', tab==='strip');
+  document.getElementById('panelFilter').classList.toggle('active', tab==='filter');
+  document.getElementById('panelStrip').classList.toggle('active', tab==='strip');
+}
+
+function drawDustScratches(ctx, x, y, w, h){
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1;
+  const scratchCount = 2 + Math.floor(Math.random()*3);
+  for (let i=0;i<scratchCount;i++){
+    const sx = x + Math.random()*w;
+    ctx.globalAlpha = 0.12 + Math.random()*0.18;
+    ctx.beginPath(); ctx.moveTo(sx, y); ctx.lineTo(sx + (Math.random()-0.5)*w*0.08, y+h); ctx.stroke();
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  const dustCount = Math.floor(w*h/9000);
+  for (let i=0;i<dustCount;i++){
+    const dx = x + Math.random()*w, dy = y + Math.random()*h, r = Math.random()*1.3+0.3;
+    ctx.globalAlpha = 0.15 + Math.random()*0.25;
+    ctx.beginPath(); ctx.arc(dx, dy, r, 0, Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+const STYLE_GRADES = {
+  warm:    { grade:(r,g,b)=>[r*1.08+10, g*1.02+4, b*0.90], blackFloor:16 },
+  digicam: { grade:(r,g,b)=>[(r-128)*1.1+128+6, (g-128)*1.1+128, (b-128)*1.1+128+10], blackFloor:16 },
+  bw:      { grade:(r,g,b)=>{ const gray=r*0.3+g*0.59+b*0.11; const v=(gray-128)*1.12+128; return [v,v,v]; }, blackFloor:16 },
+  kodak:   { grade:(r,g,b)=>[r*1.06+6, g*1.08+10, b*0.82], blackFloor:16 },
+  fuji:    { grade:(r,g,b)=>[r*0.96+2, g*1.04+6, b*1.06+4], blackFloor:18 },
+  polaroid:{ grade:(r,g,b)=>[r*1.02+18, g*0.98+14, b*1.04+20], blackFloor:34 },
+};
+
+function applyFilmToRegion(ctx, img, x, y, w, h, style, opts, cropInfo){
+  opts = opts || {};
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  if (cropInfo) drawCropped(ctx, img, x, y, w, h, cropInfo); else drawCoverAt(ctx, img, x, y, w, h);
+
+  const bw = style === 'bw';
+  const grade = STYLE_GRADES[style] || STYLE_GRADES.warm;
+  const imgData = ctx.getImageData(x, y, w, h);
+  const d = imgData.data;
+  const satAdj = adjustments.saturation/100;
+  const contrastFactor = 1 + adjustments.contrast/100;
+  const brightAdj = adjustments.brightness*2;
+  const warmAdj = adjustments.warmth*1.5;
+  const grainMult = adjustments.grain/50;
+
+  for (let i = 0; i < d.length; i += 4){
+    let r = d[i], g = d[i+1], b = d[i+2];
+    [r, g, b] = grade.grade(r, g, b);
+    if (satAdj !== 0){
+      const gray = r*0.3+g*0.59+b*0.11;
+      const sf = 1 + satAdj;
+      r = gray + (r-gray)*sf; g = gray + (g-gray)*sf; b = gray + (b-gray)*sf;
+    }
+    r += warmAdj; b -= warmAdj;
+    r += brightAdj; g += brightAdj; b += brightAdj;
+    r = (r-128)*contrastFactor+128; g = (g-128)*contrastFactor+128; b = (b-128)*contrastFactor+128;
+    r = grade.blackFloor + r*(255-grade.blackFloor)/255;
+    g = grade.blackFloor + g*(255-grade.blackFloor)/255;
+    b = grade.blackFloor + b*(255-grade.blackFloor)/255;
+    const lum = (r+g+b)/3;
+    const grainAmt = (1 - (lum/255)*0.6) * 26 * grainMult;
+    const grain = (Math.random()-0.5) * grainAmt;
+    r += grain; g += grain; b += grain;
+    d[i] = Math.max(0, Math.min(255, r));
+    d[i+1] = Math.max(0, Math.min(255, g));
+    d[i+2] = Math.max(0, Math.min(255, b));
+  }
+  ctx.putImageData(imgData, x, y);
+
+  const halo = document.createElement('canvas'); halo.width = w; halo.height = h;
+  halo.getContext('2d').drawImage(ctx.canvas, x, y, w, h, 0, 0, w, h);
+  const blurred = document.createElement('canvas'); blurred.width = w; blurred.height = h;
+  const bCtx = blurred.getContext('2d');
+  bCtx.filter = 'blur(' + Math.max(4, w*0.02) + 'px)';
+  bCtx.drawImage(halo, 0, 0);
+  ctx.globalCompositeOperation = 'screen'; ctx.globalAlpha = 0.22;
+  ctx.drawImage(blurred, x, y, w, h);
+  ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+
+  if (opts.leak !== false && !bw){
+    const leak = ctx.createLinearGradient(x+w, y, x+w*0.25, y+h*0.65);
+    leak.addColorStop(0, 'rgba(255,120,40,0.55)');
+    leak.addColorStop(0.35, 'rgba(255,70,60,0.22)');
+    leak.addColorStop(1, 'rgba(255,70,60,0)');
+    ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = leak; ctx.fillRect(x, y, w, h);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  const vignetteAlpha = Math.max(0, Math.min(1, (adjustments.vignette/60) * 0.38));
+  const vgrad = ctx.createRadialGradient(x+w/2, y+h/2, Math.min(w,h)*0.32, x+w/2, y+h/2, Math.max(w,h)*0.75);
+  vgrad.addColorStop(0, 'rgba(0,0,0,0)'); vgrad.addColorStop(1, 'rgba(0,0,0,' + vignetteAlpha + ')');
+  ctx.fillStyle = vgrad; ctx.globalCompositeOperation = 'multiply'; ctx.fillRect(x, y, w, h);
+  ctx.globalCompositeOperation = 'source-over';
+
+  drawDustScratches(ctx, x, y, w, h);
+  ctx.restore();
+}
+
+/* blend original + full film effect by intensity (0-100) */
+function applyFilmBlended(ctx, img, x, y, w, h, style, opts, cropInfo){
+  ctx.save(); ctx.beginPath(); ctx.rect(x,y,w,h); ctx.clip();
+  if (cropInfo) drawCropped(ctx, img, x, y, w, h, cropInfo); else drawCoverAt(ctx, img, x, y, w, h);
+  ctx.restore();
+
+  const intensity = adjustments.intensity;
+  if (intensity <= 0) return;
+
+  const off = document.createElement('canvas'); off.width = w; off.height = h;
+  applyFilmToRegion(off.getContext('2d'), img, 0, 0, w, h, style, opts, cropInfo);
+
+  ctx.save(); ctx.beginPath(); ctx.rect(x,y,w,h); ctx.clip();
+  ctx.globalAlpha = intensity/100;
+  ctx.drawImage(off, x, y);
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+/* ============ FILM FILTER TAB ============ */
+let filterImg = null;
+let currentStyle = 'warm';
+let currentAspect = 'square';
+const ASPECTS = { square:{w:1080,h:1080}, feed:{w:1080,h:1350}, story:{w:1080,h:1920} };
+let cropState = { zoom: 1, centerX: 0, centerY: 0 };
+let cropDragState = null;
+
+function updateCropEditorSize(){
+  const dims = ASPECTS[currentAspect];
+  const editorW = 640;
+  const editorH = Math.round(editorW * (dims.h/dims.w));
+  const c = document.getElementById('cropEditorCanvas');
+  c.width = editorW; c.height = editorH;
+}
+function clampCropCenter(){
+  if (!filterImg) return;
+  const c = document.getElementById('cropEditorCanvas');
+  const baseScale = Math.max(c.width/filterImg.width, c.height/filterImg.height);
+  const visW = c.width/(baseScale*cropState.zoom), visH = c.height/(baseScale*cropState.zoom);
+  cropState.centerX = Math.max(visW/2, Math.min(filterImg.width-visW/2, cropState.centerX));
+  cropState.centerY = Math.max(visH/2, Math.min(filterImg.height-visH/2, cropState.centerY));
+}
+function renderCropEditor(){
+  if (!filterImg) return;
+  const c = document.getElementById('cropEditorCanvas');
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0,0,c.width,c.height);
+  drawCropped(ctx, filterImg, 0, 0, c.width, c.height, cropState);
+  // rule-of-thirds guide lines
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1;
+  for (let i=1;i<3;i++){
+    ctx.beginPath(); ctx.moveTo(c.width*i/3, 0); ctx.lineTo(c.width*i/3, c.height); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, c.height*i/3); ctx.lineTo(c.width, c.height*i/3); ctx.stroke();
+  }
+  ctx.restore();
+}
+function onZoomInput(val){
+  cropState.zoom = val/100;
+  clampCropCenter();
+  renderCropEditor();
+  renderFilter();
+}
+(function initCropDrag(){
+  const cropCanvas = document.getElementById('cropEditorCanvas');
+  cropCanvas.addEventListener('pointerdown', (e) => {
+    if (!filterImg) return;
+    const rect = cropCanvas.getBoundingClientRect();
+    cropDragState = {
+      startClientX: e.clientX, startClientY: e.clientY,
+      startCenterX: cropState.centerX, startCenterY: cropState.centerY,
+      dispScale: rect.width / cropCanvas.width,
+    };
+    cropCanvas.setPointerCapture(e.pointerId);
+  });
+  cropCanvas.addEventListener('pointermove', (e) => {
+    if (!cropDragState || !filterImg) return;
+    const dxDisp = e.clientX - cropDragState.startClientX;
+    const dyDisp = e.clientY - cropDragState.startClientY;
+    const dxCanvas = dxDisp / cropDragState.dispScale;
+    const dyCanvas = dyDisp / cropDragState.dispScale;
+    const rectNow = computeCropRect(filterImg, cropCanvas.width, cropCanvas.height, cropState.zoom, cropDragState.startCenterX, cropDragState.startCenterY);
+    const srcPerPxX = rectNow.sw / cropCanvas.width;
+    const srcPerPxY = rectNow.sh / cropCanvas.height;
+    cropState.centerX = cropDragState.startCenterX - dxCanvas*srcPerPxX;
+    cropState.centerY = cropDragState.startCenterY - dyCanvas*srcPerPxY;
+    clampCropCenter();
+    renderCropEditor();
+    renderFilter();
+  });
+  const endDrag = () => { cropDragState = null; };
+  cropCanvas.addEventListener('pointerup', endDrag);
+  cropCanvas.addEventListener('pointercancel', endDrag);
+})();
+
+async function handleFilterFile(file){
+  if (!file) return;
+  filterImg = await loadImageFile(file);
+  cropState = { zoom: 1, centerX: filterImg.width/2, centerY: filterImg.height/2 };
+  document.getElementById('zoomSlider').value = 100;
+  document.getElementById('cropEditorWrap').style.display = 'block';
+  updateCropEditorSize();
+  renderCropEditor();
+  document.getElementById('filterPreviewWrap').style.display = 'block';
+  document.getElementById('downloadFilterBtn').disabled = false;
+  if (navigator.share) document.getElementById('shareFilterBtn').disabled = false;
+  renderFilter();
+}
+document.getElementById('fileFilter').addEventListener('change', (e) => handleFilterFile(e.target.files[0]));
+const dropFilterEl = document.getElementById('dropFilter');
+['dragover','dragenter'].forEach(evt => dropFilterEl.addEventListener(evt, (e) => {
+  if (!e.dataTransfer.types.includes('Files')) return;
+  e.preventDefault(); e.stopPropagation(); dropFilterEl.classList.add('drop-active');
+}));
+['dragleave','dragend'].forEach(evt => dropFilterEl.addEventListener(evt, (e) => {
+  e.preventDefault(); e.stopPropagation(); dropFilterEl.classList.remove('drop-active');
+}));
+dropFilterEl.addEventListener('drop', (e) => {
+  if (!e.dataTransfer.files || !e.dataTransfer.files.length) return;
+  e.preventDefault(); e.stopPropagation();
+  dropFilterEl.classList.remove('drop-active');
+  handleFilterFile(e.dataTransfer.files[0]);
+});
+
+function resetFilter(){
+  filterImg = null;
+  cropDragState = null;
+  document.getElementById('cropEditorWrap').style.display = 'none';
+  document.getElementById('filterPreviewWrap').style.display = 'none';
+  document.getElementById('downloadFilterBtn').disabled = true;
+  document.getElementById('shareFilterBtn').disabled = true;
+  document.getElementById('fileFilter').value = '';
+}
+function setAspect(a){
+  currentAspect = a;
+  document.querySelectorAll('#panelFilter .styles')[0].querySelectorAll('.style-pill').forEach(el => el.classList.toggle('active', el.dataset.aspect === a));
+  if (filterImg){
+    updateCropEditorSize();
+    clampCropCenter();
+    renderCropEditor();
+  }
+  renderFilter();
+}
+function setStyle(style){
+  currentStyle = style;
+  document.querySelectorAll('#panelFilter .styles')[1].querySelectorAll('.style-pill').forEach(el => el.classList.toggle('active', el.dataset.style === style));
+  renderFilter();
+}
+
+function renderFilter(){
+  if (!filterImg) return;
+  const dims = ASPECTS[currentAspect];
+  const showWatermark = document.getElementById('watermarkToggle').checked;
+  const scale = dims.w / 900; // keep detail consistent across aspect sizes
+  const W = dims.w, PHOTO_H = dims.h, BOTTOM_MARGIN = showWatermark ? Math.round(140*scale*0.5) : 0;
+
+  const origCanvas = document.getElementById('filterCanvasOriginal');
+  const filtCanvas = document.getElementById('filterCanvas');
+  [origCanvas, filtCanvas].forEach(c => { c.width = W; c.height = PHOTO_H + BOTTOM_MARGIN; });
+
+  const octx = origCanvas.getContext('2d');
+  octx.fillStyle = '#FAF7F0'; octx.fillRect(0,0,W,origCanvas.height);
+  drawCropped(octx, filterImg, 0, 0, W, PHOTO_H, cropState);
+
+  const ctx = filtCanvas.getContext('2d');
+  ctx.fillStyle = '#FAF7F0'; ctx.fillRect(0, 0, W, filtCanvas.height);
+  const leakOn = document.getElementById('leakToggle').checked;
+  applyFilmBlended(ctx, filterImg, 0, 0, W, PHOTO_H, currentStyle, { leak: leakOn }, cropState);
+
+  if (document.getElementById('dateStampToggle').checked){
+    const now = new Date();
+    const stamp = "'" + String(now.getFullYear()).slice(2) + " " + (now.getMonth()+1) + " " + now.getDate();
+    const fsize = Math.round(46*scale*0.9);
+    ctx.font = "italic " + fsize + "px 'VT323', monospace";
+    ctx.fillStyle = stampColor; ctx.textAlign = 'right';
+    ctx.shadowColor = 'rgba(0,0,0,0.3)'; ctx.shadowBlur = 2;
+    ctx.fillText(stamp, W - 30*scale, PHOTO_H - 28*scale);
+    ctx.shadowBlur = 0;
+  }
+  if (showWatermark){
+    ctx.fillStyle = '#B7AA96';
+    ctx.font = Math.round(24*scale*0.5) + "px 'Space Grotesk', sans-serif";
+    ctx.textAlign = 'center';
+    ctx.fillText('ANALOGCAM LAB', W/2, PHOTO_H + BOTTOM_MARGIN/2 + 8);
+  }
+
+  initCompareSlider();
+}
+
+/* before/after compare slider */
+let compareInit = false;
+function setSplit(pct){
+  pct = Math.max(0, Math.min(100, pct));
+  document.getElementById('filterCanvas').style.clipPath = 'inset(0 ' + (100-pct) + '% 0 0)';
+  document.getElementById('compareHandle').style.left = pct + '%';
+}
+function initCompareSlider(){
+  setSplit(50);
+  if (compareInit) return;
+  compareInit = true;
+  const wrap = document.getElementById('compareWrap');
+  let dragging = false;
+  const move = (clientX) => {
+    const rect = wrap.getBoundingClientRect();
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    setSplit(pct);
+  };
+  wrap.addEventListener('pointerdown', (e) => { dragging = true; wrap.setPointerCapture(e.pointerId); move(e.clientX); });
+  wrap.addEventListener('pointermove', (e) => { if (dragging) move(e.clientX); });
+  wrap.addEventListener('pointerup', () => { dragging = false; });
+  wrap.addEventListener('pointercancel', () => { dragging = false; });
+}
+document.fonts.ready.then(() => { if (filterImg) renderFilter(); });
+
+/* ============ PHOTO GRID TAB ============ */
+let layout = 'col4';
+let stripStyle = 'warm';
+let frameColor = '#FFFFFF';
+let stripImgs = [];
+let reorderState = null;
+const LAYOUTS = {
+  col4:     { cols: 1, rows: 4, count: 4, tall: true },
+  grid2x2:  { cols: 2, rows: 2, count: 4, tall: false },
+  grid2x3:  { cols: 2, rows: 3, count: 6, tall: false },
+};
+
+function createSlot(i){
+  const slot = document.createElement('div');
+  slot.className = 'slot';
+  slot.dataset.i = i;
+  slot.innerHTML = '<span class="num">' + (i+1) + '</span><input type="file" accept="image/*" capture="environment">';
+  const fileInput = slot.querySelector('input');
+
+  const handleSlotFile = async (file) => {
+    if (!file) return;
+    const img = await loadImageFile(file);
+    stripImgs[i] = img;
+    refreshSlotThumbnails();
+    renderStripIfReady();
+  };
+  fileInput.addEventListener('change', (e) => handleSlotFile(e.target.files[0]));
+
+  ['dragover','dragenter'].forEach(evt => slot.addEventListener(evt, (e) => {
+    if (!e.dataTransfer.types.includes('Files')) return;
+    e.preventDefault(); e.stopPropagation(); slot.classList.add('drop-active');
+  }));
+  ['dragleave','dragend'].forEach(evt => slot.addEventListener(evt, (e) => {
+    e.preventDefault(); e.stopPropagation(); slot.classList.remove('drop-active');
+  }));
+  slot.addEventListener('drop', (e) => {
+    if (!e.dataTransfer.files || !e.dataTransfer.files.length) return;
+    e.preventDefault(); e.stopPropagation();
+    slot.classList.remove('drop-active');
+    handleSlotFile(e.dataTransfer.files[0]);
+  });
+
+  slot.addEventListener('pointerdown', (e) => {
+    if (!stripImgs[i]) return;
+    e.preventDefault();
+    const rect = slot.getBoundingClientRect();
+    reorderState = { startIndex:i, startX:e.clientX, startY:e.clientY, offsetX:e.clientX-rect.left, offsetY:e.clientY-rect.top, w:rect.width, h:rect.height, moved:false, ghostEl:null };
+    slot.setPointerCapture(e.pointerId);
+  });
+  slot.addEventListener('click', () => { if (!stripImgs[i]) fileInput.click(); });
+  slot.addEventListener('pointermove', (e) => {
+    if (!reorderState || reorderState.startIndex !== i) return;
+    const dx = e.clientX - reorderState.startX, dy = e.clientY - reorderState.startY;
+    if (!reorderState.moved && Math.hypot(dx, dy) > 6){
+      reorderState.moved = true;
+      slot.classList.add('dragging-source');
+      const ghost = document.createElement('div');
+      ghost.className = 'drag-ghost';
+      ghost.style.width = reorderState.w + 'px'; ghost.style.height = reorderState.h + 'px';
+      const gImg = document.createElement('img'); gImg.src = stripImgs[i].src; gImg.draggable = false;
+      ghost.appendChild(gImg);
+      document.body.appendChild(ghost);
+      reorderState.ghostEl = ghost;
+    }
+    if (reorderState.moved){
+      reorderState.ghostEl.style.left = (e.clientX - reorderState.offsetX) + 'px';
+      reorderState.ghostEl.style.top = (e.clientY - reorderState.offsetY) + 'px';
+      document.querySelectorAll('#stripSlots .slot').forEach(s => s.classList.remove('drop-active'));
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const targetSlot = under && under.closest('.slot');
+      if (targetSlot) targetSlot.classList.add('drop-active');
+    }
+  });
+  const finishReorder = (e) => {
+    if (!reorderState || reorderState.startIndex !== i) return;
+    document.querySelectorAll('#stripSlots .slot').forEach(s => s.classList.remove('drop-active','dragging-source'));
+    if (reorderState.moved){
+      if (reorderState.ghostEl) reorderState.ghostEl.remove();
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const targetSlot = under && under.closest('.slot');
+      if (targetSlot && targetSlot.dataset.i !== undefined){
+        const targetIndex = parseInt(targetSlot.dataset.i, 10);
+        const sourceIndex = reorderState.startIndex;
+        if (targetIndex !== sourceIndex){
+          const tmp = stripImgs[targetIndex];
+          stripImgs[targetIndex] = stripImgs[sourceIndex];
+          stripImgs[sourceIndex] = tmp;
+          refreshSlotThumbnails();
+          renderStripIfReady();
+        }
+      }
+    } else { fileInput.click(); }
+    reorderState = null;
+  };
+  slot.addEventListener('pointerup', finishReorder);
+  slot.addEventListener('pointercancel', finishReorder);
+  return slot;
+}
+function refreshSlotThumbnails(){
+  document.querySelectorAll('#stripSlots .slot').forEach((slot) => {
+    const i = parseInt(slot.dataset.i, 10);
+    let imgEl = slot.querySelector('img');
+    if (stripImgs[i]){ if (!imgEl){ imgEl = document.createElement('img'); imgEl.draggable = false; imgEl.alt = 'Uploaded photo preview'; slot.appendChild(imgEl); } imgEl.src = stripImgs[i].src; }
+    else if (imgEl){ imgEl.remove(); }
+  });
+}
+function buildSlots(){
+  const cfg = LAYOUTS[layout];
+  const oldImgs = stripImgs;
+  const newImgs = new Array(cfg.count).fill(null);
+  for (let i = 0; i < Math.min(oldImgs.length, cfg.count); i++) newImgs[i] = oldImgs[i];
+  stripImgs = newImgs;
+  const container = document.getElementById('stripSlots');
+  container.className = 'slots cols-' + cfg.cols;
+  container.innerHTML = '';
+  for (let i = 0; i < cfg.count; i++) container.appendChild(createSlot(i));
+  refreshSlotThumbnails();
+  if (stripImgs.some(i => i)) renderStripIfReady();
+  else { document.getElementById('stripPreviewWrap').style.display = 'none'; document.getElementById('downloadStripBtn').disabled = true; document.getElementById('shareStripBtn').disabled = true; }
+}
+function resetStrip(){
+  stripImgs = new Array(LAYOUTS[layout].count).fill(null);
+  refreshSlotThumbnails();
+  document.getElementById('stripPreviewWrap').style.display = 'none';
+  document.getElementById('downloadStripBtn').disabled = true;
+  document.getElementById('shareStripBtn').disabled = true;
+}
+function setLayout(l){
+  layout = l;
+  document.querySelectorAll('.layout-pill').forEach(el => el.classList.toggle('active', el.dataset.layout === l));
+  buildSlots();
+}
+function setStripStyle(style){
+  stripStyle = style;
+  document.querySelectorAll('#panelStrip .styles')[0].querySelectorAll('.style-pill').forEach(el => el.classList.toggle('active', el.dataset.stripstyle === style));
+  renderStripIfReady();
+}
+function setFrameColor(color, el){
+  frameColor = color;
+  document.querySelectorAll('#panelStrip .swatches:not(#captionColorSwatches) .swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  renderStripIfReady();
+}
+function renderStripIfReady(){
+  if (stripImgs.length && stripImgs.every(i => i)){
+    document.getElementById('stripPreviewWrap').style.display = 'block';
+    document.getElementById('downloadStripBtn').disabled = false;
+    if (navigator.share) document.getElementById('shareStripBtn').disabled = false;
+    renderStrip();
+  }
+}
+function renderStrip(){
+  const cfg = LAYOUTS[layout];
+  const canvas = document.getElementById('stripCanvas');
+  const captionText = document.getElementById('captionText').value.trim();
+  const captionFont = document.getElementById('captionFont').value;
+  const W = 700, PAD = 22, GAP = 12, BOTTOM = captionText ? 100 : 20;
+  const cellW = (W - PAD*2 - GAP*(cfg.cols-1)) / cfg.cols;
+  const cellH = cfg.tall ? cellW * 1.35 : cellW;
+  canvas.width = W;
+  canvas.height = PAD*2 + cfg.rows*cellH + GAP*(cfg.rows-1) + BOTTOM;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = frameColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (let r = 0; r < cfg.rows; r++){
+    for (let c = 0; c < cfg.cols; c++){
+      const idx = r*cfg.cols + c;
+      if (idx >= stripImgs.length || !stripImgs[idx]) continue;
+      const x = PAD + c*(cellW+GAP), y = PAD + r*(cellH+GAP);
+      applyFilmBlended(ctx, stripImgs[idx], x, y, cellW, cellH, stripStyle, {});
+    }
+  }
+  if (captionText){
+    const isDark = frameColor === '#1C1A17';
+    ctx.fillStyle = captionColor || (isDark ? '#EDE6D8' : '#8C8172');
+    ctx.font = "26px '" + captionFont + "', sans-serif";
+    ctx.textAlign = 'center';
+    ctx.fillText(captionText, W/2, canvas.height - BOTTOM/2 + 8);
+  }
+}
+document.fonts.ready.then(() => { buildSlots(); });
+</script>
+</body>
+</html>
