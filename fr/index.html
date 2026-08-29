@@ -181,7 +181,7 @@
       <div class="drop" id="dropFilter" onclick="document.getElementById('fileFilter').click()">
         <div class="icon">📷</div>
         <p><b data-i18n="dropTitle">Touchez pour importer une photo</b><br><span data-i18n="dropSub">ou glissez-déposez</span></p>
-        <input type="file" id="fileFilter" accept="image/*" capture="environment">
+        <input type="file" id="fileFilter" accept="image/*">
       </div>
 
       <div class="crop-editor-wrap" id="cropEditorWrap" style="display:none;">
@@ -956,7 +956,7 @@ function createSlot(i){
   const slot = document.createElement('div');
   slot.className = 'slot';
   slot.dataset.i = i;
-  slot.innerHTML = '<span class="num">' + (i+1) + '</span><input type="file" accept="image/*" capture="environment">';
+  slot.innerHTML = '<span class="num">' + (i+1) + '</span><input type="file" accept="image/*">';
   const fileInput = slot.querySelector('input');
 
   const handleSlotFile = async (file) => {
